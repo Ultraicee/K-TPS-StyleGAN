@@ -8,13 +8,11 @@ Abstract: *In minimally invasive surgeries, reconstructing dynamic soft tissues 
 
 ## Environment requirements
 
-This repo is inspired by an amazing work of Tero Karras and Janne Hellsten for generator architecture, [StyleGAN](https://github.com/NVlabs/stylegan).
-
-For consistence, we followed the system requirements at [StyleGAN](https://github.com/NVlabs/stylegan).
+This repo is inspired by an amazing work of Tero Karras and Janne Hellsten for generator architecture, StyleGAN. For consistence, we followed the system requirements of [StyleGAN](https://github.com/NVlabs/stylegan).
 
 ## Preparing datasets
 
-Datasets for training StyleGAN part is followed by the requirements of StyleGAN official. You can unzip `MNdatasets.rar` and put .tfrecords files under 'MNdatasets' folder. Other dataset for our model training has been upload to `datasets` folder.
+Datasets for training StyleGAN part is followed by the requirements of StyleGAN official. You can unzip `MNdatasets.rar` and put `.tfrecords` files under `MNdatasets` folder. Other dataset for our model training has been upload to `datasets` folder. You can replace with your own datasets there.
 
 ## Training
 - Step 1
