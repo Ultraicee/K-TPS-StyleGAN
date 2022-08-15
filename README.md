@@ -26,7 +26,7 @@ Set up path of `.pkl` file, which saved at `results\{}-sgan-{datasets_name}-xgpu
 ## Application
 Modify training parameter `data_size` to 1 and modify range of load images to implement model.
 
-Difference between `k-styleGAN.py` or `k-styleGAN_per.py` is using last output disparity or not for current training.
+Difference between `k-styleGAN.py` and `k-styleGAN_per.py` is using last output disparity or not for current training.
 
 ## Contrast result
 
