@@ -1,6 +1,6 @@
 ## K-TPS-StyleGAN&mdash;Tensorflow implementation
 
-![Reconstruction result image](./images/pipeline.png)
+![Pipeline image](./images/pipeline.png)
 
 **Disparity Estimation of Stereo-endoscopic Images Using StyleGAN**
 
