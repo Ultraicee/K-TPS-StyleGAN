@@ -17,7 +17,7 @@ Datasets for training StyleGAN part is followed by the requirements of StyleGAN 
 ## Training
 - Step 1
 
-Set up training parameters and run `train.py` for training simplied StyleGAN. You can find more setting details at [StyleGAN](https://github.com/NVlabs/stylegan) 
+Set up training parameters and run `train.py` for training simplied StyleGAN. You can find more setting details at [StyleGAN](https://github.com/NVlabs/stylegan). 
 
 - Step 2
 
