@@ -1,6 +1,6 @@
 ## K-TPS-StyleGAN&mdash;Tensorflow implementation
 
-![Reconstruction result image](./images/rec_result.png)
+![Reconstruction result image](./images/pipeline.png)
 
 **Disparity Estimation of Stereo-endoscopic Images Using StyleGAN**
 
@@ -27,6 +27,9 @@ Modify training parameter `data_size` to 1 and modify range of load images to im
 
 Difference between `k-styleGAN.py` or `k-styleGAN_per.py` is using last output disparity or not for current training.
 
+## Compare result
+
+![Reconstruction result image](./images/rec_result.png)
 
 ## Citation
 
