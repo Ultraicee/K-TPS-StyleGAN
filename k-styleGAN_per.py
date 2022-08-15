@@ -41,7 +41,7 @@ def get_uninitialized_variables(sess):
     return not_initialized_vars
 
 
-def train_z(params, left_ims, right_ims, Gs, batch_idx, result_path):
+def train_z(params, left_ims, right_ims, Gs, batch_idx, result_path, max_idx):
     # solve dlatents
     latents = np.zeros([params.data_size, Gs.input_shape[1]])
     latents_in = tf.constant(latents)
@@ -113,7 +113,7 @@ def train_z(params, left_ims, right_ims, Gs, batch_idx, result_path):
     res_loss_all = []
     w_stylegan_process_all = []
 
-    for idx in range(12):
+    for idx in range(max_idx):
         ids = range(idx * params.data_size, (idx + 1) * params.data_size)
         cur_left, cur_right = read_images.read_stereo_images(source_img_path, ids)
         start_time = time.time()
@@ -181,9 +181,9 @@ if __name__ == '__main__':
                           )
     
     # modify the path of your own datasets and pre-trained styleGAN model
-    source_img_path = '/home/ubuntu/jupyter_workspace/dataset/real_heart/invivo1_rect/'
+    source_img_path = 'datasets/invivo1_rect/'
     model_path = 'results/00002-sgan-MNdatasets-1gpu/network-snapshot-001170.pkl'
-    
+    max_idx = 12
     # load pre-trained G
     tflib.init_tf()
     url = os.path.abspath(model_path)
@@ -195,7 +195,7 @@ if __name__ == '__main__':
     learning_rate_init = np.float32(params.learning_rate)
     optimize_op = tf.train.AdamOptimizer(learning_rate_init)  # ,0.9,0.999,1e-08
     optimize_op_compensate_disp = tf.train.AdamOptimizer(5e-1)  # ,0.9,0.999,1e-08
-    for idx in range(12):
+    for idx in range(max_idx):
         ids = range(idx * params.data_size, (idx + 1) * params.data_size)
         left_ims, right_ims = read_images.read_stereo_images(source_img_path, ids)
-        train_z(params, left_ims, right_ims, Gs, idx, result_path='gt_z_per/')
+        train_z(params, left_ims, right_ims, Gs, idx, 'gt_z_per/', max_idx)

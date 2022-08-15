@@ -141,7 +141,7 @@ if __name__ == '__main__':
                           )
     
     # modify the path of your own datasets and pre-trained styleGAN model
-    source_img_path = '/home/ubuntu/jupyter_workspace/dataset/real_heart/invivo1_rect/'
+    source_img_path = 'datasets/invivo1_rect/'
     model_path = 'results/00002-sgan-MNdatasets-1gpu/network-snapshot-001170.pkl'
     
     # load pre-trained G
