@@ -41,7 +41,7 @@ def get_uninitialized_variables(sess):
     return not_initialized_vars
 
 
-def train_z(params, left_ims, right_ims, Gs, batch_idx, result_path):
+def train_z(params, left_ims, right_ims, Gs, batch_idx, result_path, max_idx):
     # solve dlatents
     latents = np.zeros([params.data_size, Gs.input_shape[1]])
     latents_in = tf.constant(latents)
@@ -105,7 +105,7 @@ def train_z(params, left_ims, right_ims, Gs, batch_idx, result_path):
 
         train_op = optimize_op.minimize(loss, var_list=[z_input])  # z_input_tile
 
-    # session
+    # run session
     tf.get_default_session().run(tf.variables_initializer(get_uninitialized_variables(tf.get_default_session())))
     disps = []
     disps_all = []
@@ -113,7 +113,7 @@ def train_z(params, left_ims, right_ims, Gs, batch_idx, result_path):
     res_loss_all = []
     w_stylegan_process_all = []
 
-    for idx in range(12):
+    for idx in range(max_idx):
         ids = range(idx * params.data_size, (idx + 1) * params.data_size)
         cur_left, cur_right = read_images.read_stereo_images(source_img_path, ids)
         start_time = time.time()
@@ -198,4 +198,4 @@ if __name__ == '__main__':
     for idx in range(max_idx):
         ids = range(idx * params.data_size, (idx + 1) * params.data_size)
         left_ims, right_ims = read_images.read_stereo_images(source_img_path, ids)
-        train_z(params, left_ims, right_ims, Gs, idx, result_path='gt_z_per/')
+        train_z(params, left_ims, right_ims, Gs, idx, result_path='gt_z_per/', max_idx)
