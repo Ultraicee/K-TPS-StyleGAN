@@ -182,8 +182,8 @@ if __name__ == '__main__':
     
     # modify the path of your own datasets and pre-trained styleGAN model
     source_img_path = 'datasets/invivo1_rect/'
-    model_path = 'results/00002-sgan-MNdatasets-1gpu/network-snapshot-001170.pkl'
-    range_idx = [60]
+    model_path = 'results/00001-sgan-MNdatasets-1gpu/network-snapshot-001520.pkl'
+    range_idx = [0] # in range of(range_idx)*data_size
     # load pre-trained G
     tflib.init_tf()
     url = os.path.abspath(model_path)
