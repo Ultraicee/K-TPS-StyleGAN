@@ -12,7 +12,7 @@ This repo is inspired by an amazing work of Tero Karras and Janne Hellsten for g
 
 ## Preparing datasets
 
-Datasets for training StyleGAN part is followed by the requirements of StyleGAN official. You can unzip `MNdatasets.rar` and put `.tfrecords` files under `MNdatasets` folder. Other dataset for our model training has been upload to `datasets` folder. You can replace with your own datasets there.
+Datasets for training StyleGAN part is followed by the requirements of StyleGAN official. You can unzip `MNdatasets.rar` and put `.tfrecords` files under `MNdatasets` folder. You can download the datasets we used in paper [here](http://hamlyn.doc.ic.ac.uk/vision/).
 
 ## Training
 - Step 1
