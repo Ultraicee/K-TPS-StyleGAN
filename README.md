@@ -1,6 +1,6 @@
 ## K-TPS-StyleGAN&mdash;Tensorflow implementation
 
-![Reconstruction result image](./images/rec_result.png)
+![Pipeline image](./images/pipeline.png)
 
 **Disparity Estimation of Stereo-endoscopic Images Using StyleGAN**
 
@@ -8,25 +8,29 @@ Abstract: *In minimally invasive surgeries, reconstructing dynamic soft tissues 
 
 ## Environment requirements
 
-This repo is inspired by an amazing work of Tero Karras and Janne Hellsten for generator architecture, [StyleGAN](https://github.com/NVlabs/stylegan).
-
-For consistence, we followed the system requirements at [StyleGAN](https://github.com/NVlabs/stylegan).
+This repo is inspired by an amazing work of Tero Karras and Janne Hellsten for generator architecture, StyleGAN. For consistence, we followed the system requirements of [StyleGAN](https://github.com/NVlabs/stylegan).
 
 ## Preparing datasets
 
-Datasets for training StyleGAN part is followed by the requirements of StyleGAN official. You can unzip `MNdatasets.rar` and put .tfrecords files under 'MNdatasets' folder. Other dataset for our model training has been upload to `datasets` folder.
+Datasets for training StyleGAN part is followed by the requirements of StyleGAN official. You can unzip `MNdatasets.rar` and put `.tfrecords` files under `MNdatasets` folder. You can download the datasets we used in paper [here](http://hamlyn.doc.ic.ac.uk/vision/).
 
 ## Training
 - Step 1
-Set up training parameters and run `train.py` for training simplied StyleGAN. You can find more setting details at [StyleGAN](https://github.com/NVlabs/stylegan) 
+
+Set up training parameters and run `train.py` for training simplied StyleGAN. You can find more setting details at [StyleGAN](https://github.com/NVlabs/stylegan). 
+
 - Step 2
+
 Set up path of `.pkl` file, which saved at `results\{}-sgan-{datasets_name}-xgpu\` folder and other training strategy at `k-styleGAN.py` or `k-styleGAN_per.py`. Then just run it.
 
 ## Application
 Modify training parameter `data_size` to 1 and modify range of load images to implement model.
 
-Difference between `k-styleGAN.py` or `k-styleGAN_per.py` is using last output disparity or not for current training.
+Difference between `k-styleGAN.py` and `k-styleGAN_per.py` is using last output disparity or not for current training.
 
+## Contrast result
+
+![Reconstruction result image](./images/rec_result.png)
 
 ## Citation
 
