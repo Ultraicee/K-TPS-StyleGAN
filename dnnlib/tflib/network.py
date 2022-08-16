@@ -377,9 +377,7 @@ class Network:
             assume_frozen:      Improve multi-GPU performance by assuming that the trainable parameters will remain changed between calls.
             dynamic_kwargs:     Additional keyword arguments to be passed into the network build function.
         """
-        #print(in_arrays)
-        #print(self.input_names)
-        #print(self.num_inputs)
+
         assert len(in_arrays) == self.num_inputs
         assert not all(arr is None for arr in in_arrays)
         assert input_transform is None or util.is_top_level_function(input_transform["func"])
@@ -433,8 +431,6 @@ class Network:
 
         # Run minibatches.
         in_expr, out_expr = self._run_cache[key]
-        #print(in_expr)
-        #print(out_expr)
         out_arrays = [np.empty([num_items] + tfutil.shape_to_list(expr.shape)[1:], expr.dtype.name) for expr in out_expr]
 
         for mb_begin in range(0, num_items, minibatch_size):
