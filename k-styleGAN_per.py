@@ -1,6 +1,6 @@
 import time
 from collections import namedtuple
-from utils import linear_sample, read_images,decoder
+from utils import linear_sample, read_images, decoder
 
 import os
 import pickle
