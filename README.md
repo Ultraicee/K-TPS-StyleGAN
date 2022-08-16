@@ -18,7 +18,7 @@ Datasets for training StyleGAN part is followed by the requirements of StyleGAN 
 - Step 1
 
 Set up training parameters and run `train.py` for training simplied StyleGAN. You can find more setting details at [StyleGAN](https://github.com/NVlabs/stylegan). 
-
+We provide a `.pkl`file for you to skip step 1.
 - Step 2
 
 Set up path of `.pkl` file, which saved at `results\{}-sgan-{datasets_name}-xgpu\` folder and other training strategy at `k-styleGAN.py` or `k-styleGAN_per.py`. Then just run it.
