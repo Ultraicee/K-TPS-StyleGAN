@@ -222,13 +222,12 @@ def _populate_run_dir(run_dir: str, submit_config: SubmitConfig) -> None:
 
 
 def run_wrapper(submit_config: SubmitConfig) -> None:
-    """Wrap the actual run function call for handling logging, exceptions, typing, etc."""##打包
+    """Wrap the actual run function call for handling logging, exceptions, typing, etc."""
     is_local = submit_config.submit_target == SubmitTarget.LOCAL
 
     checker = None
 
     # when running locally, redirect stderr to stdout, log stdout to a file, and force flushing
-    ###书写
     if is_local:
         logger = util.Logger(file_name=os.path.join(submit_config.run_dir, "log.txt"), file_mode="w", should_flush=True)
     else:  # when running in a cluster, redirect stderr to stdout, and just force flushing (log writing is handled by run.sh)
@@ -240,7 +239,6 @@ def run_wrapper(submit_config: SubmitConfig) -> None:
     try:
         print("dnnlib: Running {0}() on {1}...".format(submit_config.run_func_name, submit_config.host_name))
         start_time = time.time()
-        #####开始运行
         util.call_func_by_name(func_name=submit_config.run_func_name, submit_config=submit_config, **submit_config.run_func_kwargs)
         print("dnnlib: Finished {0}() in {1}.".format(submit_config.run_func_name, util.format_time(time.time() - start_time)))
     except:
@@ -270,21 +268,16 @@ def submit_run(submit_config: SubmitConfig, run_func_name: str, **run_func_kwarg
         submit_config.user_name = get_user_name()
 
     submit_config.run_func_name = run_func_name
-    submit_config.run_func_kwargs = run_func_kwargs###trainloop参数
+    submit_config.run_func_kwargs = run_func_kwargs
 
     assert submit_config.submit_target == SubmitTarget.LOCAL
-    if submit_config.submit_target in {SubmitTarget.LOCAL}:
-        
-        #创建文件夹
+    if submit_config.submit_target in {SubmitTarget.LOCAL}:     
         run_dir = _create_run_dir_local(submit_config)
-        
-        ##项目名称
         submit_config.task_name = "{0}-{1:05d}-{2}".format(submit_config.user_name, submit_config.run_id, submit_config.run_desc)
         submit_config.run_dir = run_dir
         _populate_run_dir(run_dir, submit_config)
 
     if submit_config.print_info:
-        ###打印cofig文件
         print("\nSubmit config:\n")
         pprint.pprint(submit_config, indent=4, width=200, compact=False)
 
